@@ -2,25 +2,31 @@ package com.example.marketingrequests.Activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.marketingrequests.R
+import com.example.marketingrequests.Tittle
+import com.example.marketingrequests.databinding.IntrolayoutBinding
 
 class MainActivity: AppCompatActivity(){
+    private lateinit var binding: IntrolayoutBinding
+
+    private val tittle: Tittle = Tittle("Requisitar Peças Gr\u00E1ficas")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.intro)
 
-    /*
-        EditText outCounter = (EditText)findViewById(R.id.out_counter);
-        outCounter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-    */
+        //setContentView(R.layout.introlayout)
+        binding = DataBindingUtil.setContentView(this, R.layout.introlayout)
 
-        val btReqGraphicPiece:Button = findViewById(R.id.reqGraphicPiece);
-        btReqGraphicPiece.setOnClickListener{
+        binding.tittle = tittle
+        /*
+            binding.apply{
+                binding.names
+                binding.invalidateAll()
+            }
+         */
+        binding.btreqGraphicPiece.setOnClickListener{
            val intentReqGraphicPiece = Intent(this, GraphicPieceActivity::class.java)
            startActivity (intentReqGraphicPiece)
         }

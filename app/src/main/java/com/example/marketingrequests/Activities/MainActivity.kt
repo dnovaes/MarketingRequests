@@ -28,7 +28,8 @@ class MainActivity: AppCompatActivity(){
          */
         binding.btreqGraphicPiece.setOnClickListener{
            val intentReqGraphicPiece = Intent(this, GraphicPieceActivity::class.java)
-           startActivity (intentReqGraphicPiece)
+            startActivity (intentReqGraphicPiece)
+
         }
     }
 }

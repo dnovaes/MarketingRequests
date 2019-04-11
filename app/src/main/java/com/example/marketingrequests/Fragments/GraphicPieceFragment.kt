@@ -14,8 +14,6 @@ import com.example.marketingrequests.databinding.FragmentTypegraphicpieceBinding
 class GraphicPieceFragment: Fragment(){
 
     var scene1: Scene? = null
-    var scene2: Scene? = null
-    var scene3: Scene? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return super.onCreateView(inflater, container, savedInstanceState)
@@ -31,15 +29,13 @@ class GraphicPieceFragment: Fragment(){
         val rootGroup:ViewGroup = view!!.findViewById(R.id.graphicpieceFragment)
         TransitionManager.beginDelayedTransition(rootGroup)
 
-        scene1 = Scene.getSceneForLayout(rootGroup , R.layout.scene1, activity)
+        scene1 = Scene.getSceneForLayout(rootGroup , R.layout.fragment_typegraphicpiece, activity)
         //scene1?.enter()
-        scene2 = Scene.getSceneForLayout(rootGroup, R.layout.scene2, activity)
-        scene3 = Scene.getSceneForLayout(rootGroup, R.layout.fragment_typegraphicpiece, activity)
 
         //https://developer.android.com/training/transitions#kotlin (by Code or Resource file)
         //var fadeTransiction: Transition = Fade()
         var fadeGroupTransiction: Transition = TransitionInflater.from(activity).inflateTransition(R.transition.set_bt_typegraphic)
-        TransitionManager.go(scene3, fadeGroupTransiction)
+        TransitionManager.go(scene1, fadeGroupTransiction)
     }
 }
 

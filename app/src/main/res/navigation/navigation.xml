@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/navigation"
+            app:startDestination="@id/graphicPieceFragment">
+    <fragment
+        android:id="@+id/graphicPieceFragment"
+        android:name="com.example.marketingrequests.GraphicPieceFragment"
+        android:label="GraphicPieceFragment"
+        tools:layout="@layout/fragment_typegraphicpiece"
+    >
+        <action android:id="@+id/action_graphicPieceFragment_to_listGraphicPiecesFragment"
+                app:destination="@id/listGraphicPiecesFragment"/>
+    </fragment>
+    <fragment android:id="@+id/listGraphicPiecesFragment"
+              android:name="com.example.marketingrequests.ListGraphicPiecesFragment"
+              android:label="ListGraphicPiecesFragment"/>
+</navigation>

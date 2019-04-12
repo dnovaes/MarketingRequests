@@ -11,10 +11,14 @@
         >
         <fragment
             android:id="@+id/graphicPieceNavHostFragment"
-            android:name="com.example.marketingrequests.GraphicPieceFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:navGraph="@navigation/navigation"
+            app:defaultNavHost="true"
         />
     </LinearLayout>
 </layout>
-        <!-- android:name="androidx.navigation.fragment.NavHostFragment"-->
+        <!--
+        android:name="com.example.marketingrequests.GraphicPieceFragment"
+        -->

@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         package="com.example.marketingrequests">
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+        >
         <fragment
-            android:id="@+id/graphicpieceFragment"
+            android:id="@+id/graphicPieceNavHostFragment"
             android:name="com.example.marketingrequests.GraphicPieceFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+        />
     </LinearLayout>
 </layout>
+        <!-- android:name="androidx.navigation.fragment.NavHostFragment"-->

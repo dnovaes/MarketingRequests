@@ -19,14 +19,18 @@ class GraphicPieceFragment: Fragment(){
         val binding: FragmentTypegraphicpieceBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_typegraphicpiece, container, false)
 
-        binding.btDigitalPiece.setOnClickListener(
-           //v.findNavController().navigate(R.id.action_graphicPieceFragment_to_listGraphicPiecesFragment)
-            Navigation.createNavigateOnClickListener(R.id.action_graphicPieceFragment_to_listGraphicPiecesFragment)
-        )
+        binding.btDigitalPiece.setOnClickListener {
+            val action = GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Digitais")
+            Navigation.findNavController(it).navigate(action)
+            //Navigation.createNavigateOnClickListener(R.id.action_graphicPieceFragment_to_listGraphicPiecesFragment)
+            //Navigation.createNavigateOnClickListener(GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Digitais"))
+        }
 
-        binding.btPrintedPiece.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_graphicPieceFragment_to_listGraphicPiecesFragment)
-        )
+
+        binding.btPrintedPiece.setOnClickListener {
+            val action = GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Impressas")
+            Navigation.findNavController(it).navigate(action)
+        }
         return binding.root
     }
 

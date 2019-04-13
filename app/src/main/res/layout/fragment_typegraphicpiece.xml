@@ -20,7 +20,7 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="@string/digital_piece"/>
+                android:text="@string/digital_piece" android:textSize="@dimen/title_textSize"/>
         <Button
                 android:id="@+id/bt_printed_piece"
                 android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
                 android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0.13999999"
-                android:text="@string/printed_piece"/>
+                android:text="@string/printed_piece" android:textSize="@dimen/title_textSize"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

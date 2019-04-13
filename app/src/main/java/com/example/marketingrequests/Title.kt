@@ -1,3 +1,3 @@
 package com.example.marketingrequests
 
-data class Tittle(var name:String ="")
+data class Title(var name:String ="")

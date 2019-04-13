@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tittle_textSize">20sp</dimen>
+    <dimen name="title_textSize">20sp</dimen>
+    <dimen name="toolbar_phone_portrait">56dp</dimen>
+    <dimen name="toolbar_phone_landscape">48dp</dimen>
+    <dimen name="toolbar_tablets">64dp</dimen>
+    <dimen name="toolbar_padding_phone_portrait">8dp</dimen>
 </resources>

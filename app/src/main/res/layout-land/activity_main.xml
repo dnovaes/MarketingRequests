@@ -7,8 +7,8 @@
 
     <data>
         <variable
-                name="tittle"
-                type="com.example.marketingrequests.Tittle"
+                name="title"
+                type="com.example.marketingrequests.Title"
         />
     </data>
 
@@ -32,11 +32,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@={tittle.name}"
+                android:text="@={title.name}"
                 android:textColor="#FFFFFF"
                 android:background="@color/bgPetrobahia"
                 android:textFontWeight="bold"
-                android:textSize="@dimen/tittle_textSize"
+                android:textSize="@dimen/title_textSize"
                 android:padding="8dp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginStart="8dp"

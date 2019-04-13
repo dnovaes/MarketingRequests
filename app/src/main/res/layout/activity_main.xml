@@ -3,13 +3,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".Activities.MainActivity"
+        package="com.example.marketingrequests"
         android:orientation="vertical">
 
     <data>
         <variable
-                name="tittle"
-                type="com.example.marketingrequests.Tittle"
+                name="title"
+                type="com.example.marketingrequests.Title"
         />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,14 +34,16 @@
                 android:id="@+id/btreqGraphicPiece"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/title_textSize"
                 android:layout_gravity="center_horizontal"
-                android:text="@={tittle.name}"
+                android:text="@={title.name}"
                 android:textColor="#FFFFFF"
-                android:background="@color/bgPetrobahia"
                 android:textFontWeight="bold"
-                android:textSize="@dimen/tittle_textSize"
-                android:padding="8dp"
-                android:textStyle="bold" android:layout_marginBottom="8dp"
+                android:background="@drawable/bt_backgroundborder_title"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"

@@ -12,7 +12,10 @@
         <action android:id="@+id/action_graphicPieceFragment_to_listGraphicPiecesFragment"
                 app:destination="@id/listGraphicPiecesFragment"/>
     </fragment>
+
     <fragment android:id="@+id/listGraphicPiecesFragment"
               android:name="com.example.marketingrequests.ListGraphicPiecesFragment"
-              android:label="ListGraphicPiecesFragment"/>
+              android:label="ListGraphicPiecesFragment">
+        <argument android:name="typeGraphicSelected" app:argType="string"/>
+    </fragment>
 </navigation>

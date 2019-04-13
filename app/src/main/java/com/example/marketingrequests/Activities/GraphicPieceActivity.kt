@@ -9,7 +9,6 @@ import com.example.marketingrequests.databinding.ActivityGraphicpieceBinding
 
 class GraphicPieceActivity: AppCompatActivity(){
     private lateinit var binding :ActivityGraphicpieceBinding
-    var scene1:Scene? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,5 +16,12 @@ class GraphicPieceActivity: AppCompatActivity(){
 
         binding = DataBindingUtil.setContentView<ActivityGraphicpieceBinding>(this,
             R.layout.activity_graphicpiece)
+        setSupportActionBar(findViewById(R.id.toolBarGraphicPieces))
+        supportActionBar?.title = null;
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.toolbarTitle.setText("Realizar Pedidos")
     }
 }

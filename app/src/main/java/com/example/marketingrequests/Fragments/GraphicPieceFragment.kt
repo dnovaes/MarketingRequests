@@ -5,6 +5,7 @@ import android.transition.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -19,13 +20,14 @@ class GraphicPieceFragment: Fragment(){
         val binding: FragmentTypegraphicpieceBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_typegraphicpiece, container, false)
 
+        activity!!.findViewById<TextView>(R.id.toolbarTitle).setText("Realizar Pedidos")
+
         binding.btDigitalPiece.setOnClickListener {
             val action = GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Digitais")
             Navigation.findNavController(it).navigate(action)
             //Navigation.createNavigateOnClickListener(R.id.action_graphicPieceFragment_to_listGraphicPiecesFragment)
             //Navigation.createNavigateOnClickListener(GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Digitais"))
         }
-
 
         binding.btPrintedPiece.setOnClickListener {
             val action = GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Impressas")

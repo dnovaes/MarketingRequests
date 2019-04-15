@@ -22,6 +22,5 @@ class GraphicPieceActivity: AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
-        binding.toolbarTitle.setText("Realizar Pedidos")
     }
 }

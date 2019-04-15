@@ -15,7 +15,9 @@
 
     <fragment android:id="@+id/listGraphicPiecesFragment"
               android:name="com.example.marketingrequests.ListGraphicPiecesFragment"
-              android:label="ListGraphicPiecesFragment">
+              android:label="ListGraphicPiecesFragment"
+              tools:layout="@layout/fragment_listgraphicpieces"
+    >
         <argument android:name="typeGraphicSelected" app:argType="string"/>
     </fragment>
 </navigation>

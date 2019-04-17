@@ -45,6 +45,3 @@
         />
     </LinearLayout>
 </layout>
-        <!--
-        android:name="com.example.marketingrequests.GraphicPieceFragment"
-        -->

@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import com.example.marketingrequests.ViewModel.MainViewModel
 import com.example.marketingrequests.databinding.FragmentTypegraphicpieceBinding
+import kotlinx.android.synthetic.main.activity_graphicpiece.*
 
 class GraphicPieceFragment: Fragment(){
 
@@ -20,7 +23,8 @@ class GraphicPieceFragment: Fragment(){
         val binding: FragmentTypegraphicpieceBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_typegraphicpiece, container, false)
 
-        activity!!.findViewById<TextView>(R.id.toolbarTitle).setText("Realizar Pedidos")
+        val model = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        toolbarTitle.setText(model.getToolbarTitle(this))
 
         binding.btDigitalPiece.setOnClickListener {
             val action = GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Digitais")

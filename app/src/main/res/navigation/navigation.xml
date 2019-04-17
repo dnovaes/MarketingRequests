@@ -5,7 +5,7 @@
             app:startDestination="@id/graphicPieceFragment">
     <fragment
         android:id="@+id/graphicPieceFragment"
-        android:name="com.example.marketingrequests.GraphicPieceFragment"
+        android:name="com.example.marketingrequests.GraphicPiecesFragment"
         android:label="GraphicPieceFragment"
         tools:layout="@layout/fragment_typegraphicpiece"
     >

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.example.marketingrequests.ViewModel.GraphicPiecesViewModel
@@ -26,7 +27,12 @@ class GraphicPiecesFragment: Fragment(){
         val model = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
         model.setToolbarTitle(getString(R.string.do_requests))
 
-        activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(model.getToolbarTitle())
+        val toolbarObserver = Observer<String>{ textString->
+            //activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(model.getToolbarTitle())
+            activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
+        }
+        model.toolbarTitleText.observe(this, toolbarObserver)
+        //livedata object with observe setToolbarTitle and update UI with the command bellow
 
         binding.btDigitalPiece.setOnClickListener {
             val action = GraphicPiecesFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment(getString(R.string.digital_piece))

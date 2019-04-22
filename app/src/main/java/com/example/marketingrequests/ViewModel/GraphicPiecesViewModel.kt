@@ -1,19 +1,18 @@
 package com.example.marketingrequests.ViewModel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.marketingrequests.GraphicPiecesFragment
-import com.example.marketingrequests.ListGraphicPiecesFragment
 import com.example.marketingrequests.Title
 
 class GraphicPiecesViewModel: ViewModel() {
+    private val title: Title = Title("Requisitar Peças Gr\u00E1ficas")
     // Create a LiveData with a String
-    private var toolbarTitleText: String = "Peças Gr�ficas"
+    var toolbarTitleText: MutableLiveData<String> = MutableLiveData<String>().apply { setValue(title.name)}
     private var argsTypeSelected: String = ""
 
-    private val title: Title = Title("Requisitar Peças Gr\u00E1ficas")
 
     fun setToolbarTitle(toolbarTitle:String){
-        this.toolbarTitleText = toolbarTitle
+        this.toolbarTitleText = MutableLiveData<String>().apply{ setValue(toolbarTitle)}
     }
 
     fun getToolbarTitle() = toolbarTitleText

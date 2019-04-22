@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.marketingrequests.ViewModel.GraphicPiecesViewModel
 import com.example.marketingrequests.databinding.FragmentListgraphicpiecesBinding
@@ -25,11 +26,12 @@ class ListGraphicPiecesFragment: Fragment(){
         val args = arguments //receives a Bundle
 
         var model = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
+        model.setToolbarTitle(args!!.getString("typeGraphicSelected"))
 
-        model.setArgsTypeSelected(args!!.getString("typeGraphicSelected"))
-
-        activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(model.getArgsTypeSelected())
-        Toast.makeText(context, "Title: ${model.getArgsTypeSelected()}", Toast.LENGTH_SHORT).show()
+        model.toolbarTitleText.observe(this, Observer { textString ->
+            activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
+            Toast.makeText(context, "Title: ${textString}", Toast.LENGTH_SHORT).show()
+        })
 
         //return super.onCreateView(inflater, container, savedInstanceState)
         return binding.root

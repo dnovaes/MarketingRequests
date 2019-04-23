@@ -1,4 +1,4 @@
-package com.example.marketingrequests.Ui.Activities
+package com.example.marketingrequests.ui.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.marketingrequests.R
-import com.example.marketingrequests.ViewModel.GraphicPiecesViewModel
+import com.example.marketingrequests.viewmodel.GraphicPiecesViewModel
 import com.example.marketingrequests.databinding.ActivityMainBinding
 
 class MainActivity: AppCompatActivity(){

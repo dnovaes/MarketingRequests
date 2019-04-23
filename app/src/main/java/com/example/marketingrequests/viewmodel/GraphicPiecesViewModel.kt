@@ -1,4 +1,4 @@
-package com.example.marketingrequests.ViewModel
+package com.example.marketingrequests.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +9,7 @@ class GraphicPiecesViewModel: ViewModel() {
         Title("Requisitar Peças Gr\u00E1ficas")
     // Create a LiveData with a String
     var toolbarTitleText: MutableLiveData<String> = MutableLiveData<String>().apply { setValue(title.name)}
+    var bottombarVisibility: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     private var argsTypeSelected: String = ""
 
 
@@ -24,6 +25,10 @@ class GraphicPiecesViewModel: ViewModel() {
 
     fun getArgsTypeSelected():String{
         return argsTypeSelected
+    }
+
+    fun setBottomBarVisibility(bool:Boolean){
+        this.bottombarVisibility.value = bool
     }
 
     fun getTitle() = title

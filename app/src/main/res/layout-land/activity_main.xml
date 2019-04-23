@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".Activities.MainActivity"
+        tools:context=".ui.Activities.MainActivity"
         android:orientation="horizontal">
 
     <data>
         <variable
                 name="title"
-                type="com.example.marketingrequests.Title"
+                type="com.example.marketingrequests.model.Title"
         />
     </data>
 

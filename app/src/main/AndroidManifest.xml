@@ -8,7 +8,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.marketingrequests.Activities.MainActivity"
+            android:name="com.example.marketingrequests.ui.Activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,7 +16,7 @@
            </intent-filter>
         </activity>
         <activity
-            android:name="com.example.marketingrequests.Activities.GraphicPieceActivity"
+            android:name="com.example.marketingrequests.ui.Activities.GraphicPieceActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
     </application>

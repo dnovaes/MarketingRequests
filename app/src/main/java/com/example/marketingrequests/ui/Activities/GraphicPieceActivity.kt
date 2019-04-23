@@ -1,4 +1,4 @@
-package com.example.marketingrequests.Activities
+package com.example.marketingrequests.Ui.Activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

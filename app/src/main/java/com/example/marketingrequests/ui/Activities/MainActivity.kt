@@ -1,4 +1,4 @@
-package com.example.marketingrequests.Activities
+package com.example.marketingrequests.Ui.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +19,6 @@ class MainActivity: AppCompatActivity(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val model = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
-
         binding.title = model.getTitle()
 
         binding.btreqGraphicPiece.setOnClickListener{

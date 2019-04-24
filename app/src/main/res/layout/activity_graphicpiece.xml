@@ -4,64 +4,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
     >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBarGraphicPieces"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolBarGraphicPieces"
-                    android:layout_width="match_parent"
-                    android:background="@color/bgPetrobahia"
-                    android:elevation="4dp"
-                    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    android:layout_height="56dp" tools:layout_height="@dimen/toolbar_phone_portrait"
-                    app:layout_constraintTop_toTopOf="parent">
-                <TextView
-                        android:id="@+id/toolbarTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAllCaps="true"
-                        android:text="@string/petrobahia"
-                        android:textSize="@dimen/title_textSize" android:textColor="#FFFFFF"
-                        android:textStyle="bold" android:layout_gravity="center"/>
-                <ImageView
-                        android:id="@+id/toolbarLogo"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@mipmap/ic_launcher"
-                        android:contentDescription="@string/logo_pb"
-                        android:paddingTop="@dimen/toolbar_padding_phone_portrait"
-                        android:paddingBottom="@dimen/toolbar_padding_phone_portrait"/>
-            </androidx.appcompat.widget.Toolbar>
-            <fragment
-                    android:id="@+id/graphicPieceNavHostFragment"
-                    android:name="androidx.navigation.fragment.NavHostFragment"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:navGraph="@navigation/navigation"
-                    app:defaultNavHost="true"
-                    app:layout_constraintTop_toBottomOf="@+id/toolBarGraphicPieces"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <com.google.android.material.bottomappbar.BottomAppBar
-                android:id="@+id/bottomAppBar_GraphicPieces"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:layout_gravity="bottom"
-                app:backgroundTint="@color/bgPetrobahia"
-                app:buttonGravity="bottom|top"
-                app:fabAlignmentMode="end"
-        >
-            <!--app:navigationIcon="@drawable/ic_back"-->
-        </com.google.android.material.bottomappbar.BottomAppBar>
+                android:background="@color/bgPetrobahia"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:layout_height="56dp" tools:layout_height="@dimen/toolbar_phone_portrait"
+                app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:text="@string/petrobahia"
+                    android:textSize="@dimen/title_textSize" android:textColor="#FFFFFF"
+                    android:textStyle="bold" android:layout_gravity="center"/>
+            <ImageView
+                    android:id="@+id/toolbarLogo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@mipmap/ic_launcher"
+                    android:contentDescription="@string/logo_pb"
+                    android:paddingTop="@dimen/toolbar_padding_phone_portrait"
+                    android:paddingBottom="@dimen/toolbar_padding_phone_portrait"/>
+        </androidx.appcompat.widget.Toolbar>
+        <fragment
+                android:id="@+id/graphicPieceNavHostFragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#FFFFFF"
+                app:navGraph="@navigation/navigation"
+                app:defaultNavHost="true"
+                app:layout_constraintTop_toBottomOf="@+id/toolBarGraphicPieces"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"/>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                tools:backgroundTint="@color/bgPetrobahia"
+                android:id="@+id/coordinatorLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/graphicPieceNavHostFragment"
+                app:layout_constraintBottom_toBottomOf="parent">
+            <com.google.android.material.bottomappbar.BottomAppBar
+                    android:id="@+id/bottomAppBar_GraphicPieces"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    app:backgroundTint="@color/bgPetrobahia"
+                    app:buttonGravity="bottom|top"
+                    app:fabAlignmentMode="end"
+            >
+                <!--app:navigationIcon="@drawable/ic_back"-->
+            </com.google.android.material.bottomappbar.BottomAppBar>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,6 +9,8 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
@@ -22,7 +24,7 @@ import com.example.marketingrequests.databinding.FragmentListgraphicpiecesBindin
 import com.example.marketingrequests.ui.adapters.ListGraphicPiecesAdapter
 import com.example.marketingrequests.ui.adapters.ListGraphicPiecesAdapter.onGraphicPieceListener
 import com.google.android.material.bottomappbar.BottomAppBar
-
+import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
 
 
 class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener{
@@ -75,14 +77,18 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener{
 
     }
 
-    override fun onClick(pos: Int) {
+    override fun onClickItemList(pos: Int, layout:ConstraintLayout) {
         var view:View = viewManager.findViewByPosition(pos) as View
-        var color:String = String.format("%06x", ContextCompat.getColor(activity!!, R.color.colorSelectedItem) and 0xffffff)
-        var colorInt: Int = color.toInt(16)
-        Log.v("colortest", "pos $pos | $colorInt "+0x425363)
+        //var color:String = String.format("%06x", ContextCompat.getColor(activity!!, R.color.colorSelectedItem) and 0xffffff)
+        //var colorInt: Int = color.toInt(16)
+        //Log.v("colortest", "pos $pos | $colorInt "+0x425363)
 
+        layout.item_checkbox_listgraphicpieces.isChecked = !layout.item_checkbox_listgraphicpieces.isChecked
+        view.isSelected = !view.isSelected
+
+        //viewManager.findContainingItemView()
         //view.setBackgroundResource(int)
-        view.setBackgroundColor(colorInt)
+        //view.setBackgroundColor(colorInt)
     }
 }
 

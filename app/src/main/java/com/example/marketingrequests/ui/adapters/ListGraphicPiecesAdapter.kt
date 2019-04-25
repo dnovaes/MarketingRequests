@@ -1,14 +1,17 @@
 package com.example.marketingrequests.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
+import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketingrequests.R
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
 
-class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListener: onGraphicPieceListener) : View.OnClickListener,
+class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListener: onGraphicPieceListener) :
     RecyclerView.Adapter<ListGraphicPiecesAdapter.MyViewHolder>() {
 
     var listener: onGraphicPieceListener = myListener
@@ -23,7 +26,7 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): ListGraphicPiecesAdapter.MyViewHolder {
         // create a new view
-        val layoutHolder= LayoutInflater.from(parent.context)
+        var layoutHolder = LayoutInflater.from(parent.context)
             .inflate(R.layout.recyclerview_listgraphicpieces_item, parent, false) as ConstraintLayout
         // set the view's size, margins, paddings and layout parameters
         //...
@@ -35,19 +38,24 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.layoutHolder.item_text_listgraphicpieces.text = myDataset[position]
+        /*
+        if(position == 2) {
+            holder.layoutHolder.item_text_listgraphicpieces.setBackgroundColor(Color.parseColor("#567845"))
+            holder.layoutHolder.item_checkbox_listgraphicpieces.isChecked = true
+        }*/
+
         holder.itemView.setTag(position)
-        holder.itemView.setOnClickListener(this)
+        holder.itemView.setOnClickListener(){v ->
 
-    }
-
-    override fun onClick(view:View){
-        listener.onClick(view.getTag() as Int)
+            //holder.layoutHolder.item_checkbox_listgraphicpieces.isChecked = true
+            listener.onClickItemList(v.getTag() as Int, holder.layoutHolder)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
 
     interface onGraphicPieceListener{
-        fun onClick(pos:Int)
+        fun onClickItemList(pos:Int, layout:ConstraintLayout)
     }
 }

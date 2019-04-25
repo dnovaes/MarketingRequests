@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bgPetrobahia">#ff425363</color>
-    <color name="colorSelectedItem">#fecf00</color>
+    <color name="colorFocusedItem">#fecf00</color>
+    <color name="colorPressedItem">#37000000</color>
+    <color name="colorSelectedItem">#1F000000</color>
     <color name="greenPb">#3aa536</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -1,12 +1,8 @@
 package com.example.marketingrequests.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.children
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketingrequests.R
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
@@ -14,7 +10,7 @@ import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
 class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListener: onGraphicPieceListener) :
     RecyclerView.Adapter<ListGraphicPiecesAdapter.MyViewHolder>() {
 
-    var listener: onGraphicPieceListener = myListener
+    private var listener: onGraphicPieceListener = myListener
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -44,18 +40,17 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
             holder.layoutHolder.item_checkbox_listgraphicpieces.isChecked = true
         }*/
 
-        holder.itemView.setTag(position)
-        holder.itemView.setOnClickListener(){v ->
-
+        holder.itemView.setOnClickListener(){
             //holder.layoutHolder.item_checkbox_listgraphicpieces.isChecked = true
-            listener.onClickItemList(v.getTag() as Int, holder.layoutHolder)
+            listener.onClickItemList(holder.layoutHolder)
         }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
 
-    interface onGraphicPieceListener{
-        fun onClickItemList(pos:Int, layout:ConstraintLayout)
-    }
+}
+
+interface onGraphicPieceListener{
+    fun onClickItemList(layout:ConstraintLayout)
 }

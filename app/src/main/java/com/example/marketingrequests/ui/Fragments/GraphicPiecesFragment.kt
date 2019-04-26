@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import com.example.marketingrequests.GraphicPiecesFragmentDirections
 import com.example.marketingrequests.R
 import com.example.marketingrequests.viewmodel.GraphicPiecesViewModel
 import com.example.marketingrequests.databinding.FragmentTypegraphicpieceBinding

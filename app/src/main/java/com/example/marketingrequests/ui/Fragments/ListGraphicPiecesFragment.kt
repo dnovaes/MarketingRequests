@@ -1,24 +1,20 @@
-package com.example.marketingrequests
+package com.example.marketingrequests.ui.Fragments
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.marketingrequests.R
 import com.example.marketingrequests.viewmodel.GraphicPiecesViewModel
 import com.example.marketingrequests.databinding.FragmentListgraphicpiecesBinding
 import com.example.marketingrequests.ui.adapters.ListGraphicPiecesAdapter

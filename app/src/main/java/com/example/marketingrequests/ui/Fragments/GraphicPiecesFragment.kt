@@ -1,4 +1,4 @@
-package com.example.marketingrequests
+package com.example.marketingrequests.ui.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import com.example.marketingrequests.R
 import com.example.marketingrequests.viewmodel.GraphicPiecesViewModel
 import com.example.marketingrequests.databinding.FragmentTypegraphicpieceBinding
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -29,11 +30,10 @@ class GraphicPiecesFragment: Fragment(){
         vmodel = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
         vmodel.setToolbarTitle(getString(R.string.do_requests))
 
-        val toolbarObserver = Observer<String>{ textString->
-            //activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(model.getToolbarTitle())
+        vmodel.toolbarTitleText.observe(this, Observer { textString ->
             activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
-        }
-        vmodel.toolbarTitleText.observe(this, toolbarObserver)
+        })
+
         vmodel.bottombarVisibility.observe(this, Observer {  bool ->
             when(bool){
                 true -> activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces).visibility = VISIBLE
@@ -42,14 +42,16 @@ class GraphicPiecesFragment: Fragment(){
         })
 
         binding.btFragmentttypepieceDigitalpiece.setOnClickListener {
-            val action = GraphicPiecesFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment(getString(R.string.digital_piece))
+            val action =
+                GraphicPiecesFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment(getString(R.string.digital_piece))
             Navigation.findNavController(it).navigate(action)
             //Navigation.createNavigateOnClickListener(R.id.action_graphicPieceFragment_to_listGraphicPiecesFragment)
             //Navigation.createNavigateOnClickListener(GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Digitais"))
         }
 
         binding.btFragmenttypepiecePrintedpiece.setOnClickListener {
-            val action = GraphicPiecesFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment(getString(R.string.printed_piece))
+            val action =
+                GraphicPiecesFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment(getString(R.string.printed_piece))
             Navigation.findNavController(it).navigate(action)
         }
         return binding.root

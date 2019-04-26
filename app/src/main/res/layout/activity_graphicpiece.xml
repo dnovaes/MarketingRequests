@@ -23,7 +23,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAllCaps="true"
-                    android:text="@string/petrobahia"
+                    android:text="@string/do_requests"
                     android:textSize="@dimen/title_textSize" android:textColor="#FFFFFF"
                     android:textStyle="bold" android:layout_gravity="center"/>
             <ImageView

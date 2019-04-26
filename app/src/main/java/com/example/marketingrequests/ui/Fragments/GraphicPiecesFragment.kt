@@ -41,14 +41,14 @@ class GraphicPiecesFragment: Fragment(){
             }
         })
 
-        binding.btDigitalPiece.setOnClickListener {
+        binding.btFragmentttypepieceDigitalpiece.setOnClickListener {
             val action = GraphicPiecesFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment(getString(R.string.digital_piece))
             Navigation.findNavController(it).navigate(action)
             //Navigation.createNavigateOnClickListener(R.id.action_graphicPieceFragment_to_listGraphicPiecesFragment)
             //Navigation.createNavigateOnClickListener(GraphicPieceFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment("Peças Digitais"))
         }
 
-        binding.btPrintedPiece.setOnClickListener {
+        binding.btFragmenttypepiecePrintedpiece.setOnClickListener {
             val action = GraphicPiecesFragmentDirections.actionGraphicPieceFragmentToListGraphicPiecesFragment(getString(R.string.printed_piece))
             Navigation.findNavController(it).navigate(action)
         }

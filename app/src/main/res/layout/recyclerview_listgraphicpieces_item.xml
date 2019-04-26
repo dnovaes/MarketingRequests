@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
-
+            android:id="@+id/item_recyclerView_listgraphicpieces"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFFFFF"
@@ -18,34 +18,34 @@
                 android:id="@+id/item_text_listgraphicpieces"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/selectorlistgraphicpiece"
                 android:textColor="@color/bgPetrobahia"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:paddingLeft="5sp"
                 android:paddingRight="5sp"
-                android:paddingBottom="8sp"
-                android:paddingTop="8sp"
+                android:paddingBottom="12sp"
+                android:paddingTop="12sp"
                 tools:text="texttest"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintEnd_toStartOf="@+id/item_checkbox_listgraphicpieces"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="4dp"
-                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="4dp"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/item_checkbox_listgraphicpieces"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColorLink="@color/bgPetrobahia"
+                android:layout_height="0dp"
                 android:buttonTint="@color/bgPetrobahia"
-                android:background="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:background="@drawable/selectorlistgraphicpiece"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/item_text_listgraphicpieces"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintTop_toTopOf="@+id/item_text_listgraphicpieces"
-                app:layout_constraintBottom_toBottomOf="@+id/item_text_listgraphicpieces" android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"/>
+                app:layout_constraintBottom_toBottomOf="@+id/item_text_listgraphicpieces"
+                android:paddingRight="8dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,15 +1,16 @@
 package com.example.marketingrequests.viewmodel
 
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.marketingrequests.SingleLiveEvent
 import com.example.marketingrequests.model.Title
 
 class GraphicPiecesViewModel: ViewModel() {
-    private val title: Title =
-        Title("Requisitar Peças Gr\u00E1ficas")
-    // Create a LiveData with a String
+    private val title: Title = Title("Requisitar Peças Gr\u00E1ficas")
     var toolbarTitleText: MutableLiveData<String> = MutableLiveData<String>().apply { setValue(title.name)}
     var bottombarVisibility: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    var selecedtItemList = SingleLiveEvent<ConstraintLayout>()
     private var argsTypeSelected: String = ""
 
 
@@ -32,5 +33,9 @@ class GraphicPiecesViewModel: ViewModel() {
     }
 
     fun getTitle() = title
+
+    fun setSelectedItemList(item:ConstraintLayout){
+       this.selecedtItemList.value = item
+    }
 
 }

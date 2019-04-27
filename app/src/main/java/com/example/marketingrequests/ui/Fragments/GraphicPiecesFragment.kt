@@ -1,5 +1,6 @@
-package com.example.marketingrequests.ui.Fragments
+package com.example.marketingrequests.<img src="/imgs_readme/fragment_typegraphicpieces.png" width="300"/>ui.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,8 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -29,6 +32,7 @@ class GraphicPiecesFragment: Fragment(){
 
         vmodel = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
         vmodel.setToolbarTitle(getString(R.string.do_requests))
+        vmodel.setChangeToolbarsColors(false)
 
         vmodel.toolbarTitleText.observe(this, Observer { textString ->
             activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
@@ -39,6 +43,13 @@ class GraphicPiecesFragment: Fragment(){
                 true -> activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces).visibility = VISIBLE
                 false -> activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces).visibility = INVISIBLE
             }
+        })
+
+        vmodel.changeToolbarsColors.observe(this, Observer {
+            activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces)
+                .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
+            activity!!.findViewById<Toolbar>(R.id.toolBarGraphicPieces)
+                .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
         })
 
         binding.btFragmentttypepieceDigitalpiece.setOnClickListener {

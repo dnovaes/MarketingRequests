@@ -24,7 +24,7 @@
                     android:layout_height="wrap_content"
                     android:textAllCaps="true"
                     android:text="@string/do_requests"
-                    android:textSize="@dimen/title_textSize" android:textColor="#FFFFFF"
+                    android:textSize="@dimen/title_textSize" android:textColor="@color/white"
                     android:textStyle="bold" android:layout_gravity="center"/>
             <ImageView
                     android:id="@+id/toolbarLogo"
@@ -48,11 +48,12 @@
                 app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"/>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coordinatorLayout"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:orientation="vertical"
+                android:animateLayoutChanges="true"
                 tools:backgroundTint="@color/bgPetrobahia"
-                android:id="@+id/coordinatorLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/graphicPieceNavHostFragment"
@@ -63,9 +64,25 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom"
                     app:backgroundTint="@color/bgPetrobahia"
-                    app:buttonGravity="bottom|top"
-                    app:fabAlignmentMode="end"
             >
+                <ImageButton
+                        android:id="@+id/bottomAppBar_backBt_GraphicPieces"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/ic_arrow_back_white_24px"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginBottom="20dp"/>
+                <TextView
+                        android:id="@+id/bottomAppBar_numberSelected_GraphicPieces"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="@string/bottombar_numberselected_itemmenu"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title_textSize"
+                        android:typeface="serif"
+                        android:textStyle="bold"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="20dp"/>
                 <!--app:navigationIcon="@drawable/ic_back"-->
             </com.google.android.material.bottomappbar.BottomAppBar>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

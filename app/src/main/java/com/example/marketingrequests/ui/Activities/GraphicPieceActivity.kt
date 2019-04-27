@@ -1,5 +1,6 @@
 package com.example.marketingrequests.ui.Activities
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -13,6 +14,8 @@ class GraphicPieceActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.abc_alert_dialog_material)
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
         binding = DataBindingUtil.setContentView<ActivityGraphicpieceBinding>(this,
             R.layout.activity_graphicpiece)

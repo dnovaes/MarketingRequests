@@ -32,7 +32,7 @@
                 android:textSize="@dimen/title_textSize"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/app_intro_title"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:background="@drawable/bt_backgroundborder_title"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"

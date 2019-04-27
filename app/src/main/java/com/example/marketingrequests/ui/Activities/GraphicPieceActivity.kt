@@ -1,11 +1,13 @@
 package com.example.marketingrequests.ui.Activities
 
+import android.animation.LayoutTransition
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.marketingrequests.R
 import com.example.marketingrequests.databinding.ActivityGraphicpieceBinding
+import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.activity_graphicpiece.*
 
 class GraphicPieceActivity: AppCompatActivity(){
@@ -20,6 +22,8 @@ class GraphicPieceActivity: AppCompatActivity(){
         binding = DataBindingUtil.setContentView<ActivityGraphicpieceBinding>(this,
             R.layout.activity_graphicpiece)
         setSupportActionBar(toolBarGraphicPieces)
+
+        binding.coordinatorLayout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
         supportActionBar?.title = null
 

@@ -48,11 +48,12 @@
                 app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"/>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coordinatorLayout"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:orientation="vertical"
+                android:animateLayoutChanges="true"
                 tools:backgroundTint="@color/bgPetrobahia"
-                android:id="@+id/coordinatorLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/graphicPieceNavHostFragment"

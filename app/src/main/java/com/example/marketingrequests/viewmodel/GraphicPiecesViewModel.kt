@@ -8,7 +8,9 @@ import com.example.marketingrequests.SingleLiveEvent
 class GraphicPiecesViewModel: ViewModel() {
     var toolbarTitleText: MutableLiveData<String> = MutableLiveData<String>()
     var bottombarVisibility: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    var numberItemsSelected: MutableLiveData<Int> = MutableLiveData<Int>().apply {setValue(0)}
     var selecedtItemList = SingleLiveEvent<ConstraintLayout>()
+    var changeToolbarsColors = MutableLiveData<Boolean>()
     private var argsTypeSelected: String = ""
 
     fun getToolbarTitle() = toolbarTitleText.value
@@ -29,8 +31,18 @@ class GraphicPiecesViewModel: ViewModel() {
         this.bottombarVisibility.value = bool
     }
 
+    fun setChangeToolbarsColors(bool:Boolean){
+        this.changeToolbarsColors.value = bool
+    }
+
     fun setSelectedItemList(item:ConstraintLayout){
        this.selecedtItemList.value = item
     }
+
+    fun setNumberItemsSelected(num:Int){
+       this.numberItemsSelected.value = num
+    }
+
+    fun getNumberItemsSelected() = numberItemsSelected.value
 
 }

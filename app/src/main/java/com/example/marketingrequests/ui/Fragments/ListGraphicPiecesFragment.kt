@@ -1,5 +1,6 @@
 package com.example.marketingrequests.ui.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,9 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -66,9 +69,27 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
             }
         })
 
+        vmodel.numberItemsSelected.observe(this, Observer { num  ->
+            activity!!.findViewById<TextView>(R.id.bottomAppBar_numberSelected_GraphicPieces).text = num.toString()
+        })
+
         vmodel.selecedtItemList.observe(this, Observer{
             it.item_checkbox_listgraphicpieces.isChecked = !it.item_checkbox_listgraphicpieces.isChecked
             it.item_recyclerView_listgraphicpieces.isSelected = !it.item_recyclerView_listgraphicpieces.isSelected
+        })
+
+        vmodel.changeToolbarsColors.observe(this, Observer {bool ->
+            if(bool){
+                activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces)
+                    .setBackgroundColor(getColor(this.context as Context, R.color.colorBottomBarSelected))
+                activity!!.findViewById<Toolbar>(R.id.toolBarGraphicPieces)
+                    .setBackgroundColor(getColor(this.context as Context, R.color.colorBottomBarSelected))
+            }else{
+                activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces)
+                    .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
+                activity!!.findViewById<Toolbar>(R.id.toolBarGraphicPieces)
+                    .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
+            }
         })
 
         //return super.onCreateView(inflater, container, savedInstanceState)
@@ -86,7 +107,20 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
         //var colorInt: Int = color.toInt(16)
         //Log.v("colortest", "pos $pos | $colorInt "+0x425363)
         //view.isSelected = !view.isSelected
+
         vmodel.setSelectedItemList(layout)
+        var numberSelectedItems = vmodel.getNumberItemsSelected() as Int
+        if(!layout.item_recyclerView_listgraphicpieces.isSelected){
+            vmodel.setNumberItemsSelected(numberSelectedItems-1)
+        }else{
+            vmodel.setNumberItemsSelected(numberSelectedItems+1)
+        }
+
+        if(vmodel.getNumberItemsSelected() as Int > 0){
+            vmodel.setChangeToolbarsColors(true)
+        }else{
+            vmodel.setChangeToolbarsColors(false)
+        }
     }
 }
 

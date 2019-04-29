@@ -66,6 +66,7 @@
                     app:backgroundTint="@color/bgPetrobahia"
             >
                 <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/bottomAppBar_backBtLayout_GraphicPieces"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_marginBottom="11dp"
@@ -86,7 +87,6 @@
                             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!--android:background="?attr/selectableItemBackground"-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="45dp"
                         android:layout_height="45dp"

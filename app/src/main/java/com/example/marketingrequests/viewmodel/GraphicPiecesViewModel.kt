@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.marketingrequests.SingleLiveEvent
 
 class GraphicPiecesViewModel: ViewModel() {
-    var toolbarTitleText: MutableLiveData<String> = MutableLiveData<String>()
+    var toolbarTitle: MutableLiveData<String> = MutableLiveData<String>()
     var numberItemsSelected: MutableLiveData<Int> = MutableLiveData<Int>().apply {setValue(0)}
     var selecedtItemList = SingleLiveEvent<ConstraintLayout>()
     var changeToolbarsColors = MutableLiveData<Boolean>()
@@ -15,10 +15,10 @@ class GraphicPiecesViewModel: ViewModel() {
 
     private var argsTypeSelected: String = ""
 
-    fun getToolbarTitle() = toolbarTitleText.value
+    fun getToolbarTitle() = toolbarTitle.value
 
-    fun setToolbarTitle(toolbarTitle:String){
-        this.toolbarTitleText = MutableLiveData<String>().apply{ setValue(toolbarTitle)}
+    fun setToolbarTitle(text:String){
+        this.toolbarTitle.value = text
     }
 
     fun setArgsTypeSelected(argsTypeSelected:String){

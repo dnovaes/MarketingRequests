@@ -3,24 +3,19 @@ package com.example.marketingrequests.ui.activities
 import android.animation.LayoutTransition
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getColor
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.iterator
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
 import com.example.marketingrequests.R
 import com.example.marketingrequests.databinding.ActivityGraphicpieceBinding
 import com.example.marketingrequests.viewmodel.GraphicPiecesViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
-import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
 
 class GraphicPieceActivity: AppCompatActivity(){
     private lateinit var binding :ActivityGraphicpieceBinding

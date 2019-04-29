@@ -2,7 +2,6 @@ package com.example.marketingrequests
 
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

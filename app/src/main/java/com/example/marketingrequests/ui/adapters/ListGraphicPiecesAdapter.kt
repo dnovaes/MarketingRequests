@@ -3,7 +3,6 @@ package com.example.marketingrequests.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.databinding.adapters.AdapterViewBindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketingrequests.R
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*

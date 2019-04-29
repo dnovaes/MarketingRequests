@@ -3,14 +3,15 @@ package com.example.marketingrequests.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.adapters.AdapterViewBindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketingrequests.R
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
 
 class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListener: onGraphicPieceListener) :
     RecyclerView.Adapter<ListGraphicPiecesAdapter.MyViewHolder>() {
-
     private var listener: onGraphicPieceListener = myListener
+    var itemsSelected: MutableList<ConstraintLayout> = ArrayList()
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -34,15 +35,13 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.layoutHolder.item_text_listgraphicpieces.text = myDataset[position]
-        /*
-        if(position == 2) {
-            holder.layoutHolder.item_text_listgraphicpieces.setBackgroundColor(Color.parseColor("#567845"))
-            holder.layoutHolder.item_checkbox_listgraphicpieces.isChecked = true
-        }*/
 
         holder.itemView.setOnClickListener(){
-            //holder.layoutHolder.item_checkbox_listgraphicpieces.isChecked = true
-            listener.onClickItemList(holder.layoutHolder)
+            //if item was clicked in this call and currently not market as selected. it will be add on list of selected items cuz it will be marked selected very soon. (in next line (listener.onClickItemList())
+            if(!holder.layoutHolder.item_recyclerView_listgraphicpieces.isSelected){
+                itemsSelected.add(holder.layoutHolder)
+            }
+            listener.onClickItemList(holder.layoutHolder, itemsSelected)
         }
     }
 
@@ -52,5 +51,5 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
 }
 
 interface onGraphicPieceListener{
-    fun onClickItemList(layout:ConstraintLayout)
+    fun onClickItemList(layout:ConstraintLayout, itemsSelected: List<ConstraintLayout>)
 }

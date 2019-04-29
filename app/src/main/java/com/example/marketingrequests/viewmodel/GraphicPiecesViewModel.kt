@@ -11,6 +11,7 @@ class GraphicPiecesViewModel: ViewModel() {
     var selecedtItemList = SingleLiveEvent<ConstraintLayout>()
     var changeToolbarsColors = MutableLiveData<Boolean>()
     var fFillBottomBartLayout= MutableLiveData<Boolean>()
+    var fClearSelectedItems= SingleLiveEvent<Boolean>()
 
     private var argsTypeSelected: String = ""
 
@@ -51,6 +52,10 @@ class GraphicPiecesViewModel: ViewModel() {
     fun setDefaultValues(){
         fFillBottomBartLayout.value = false
         numberItemsSelected.value = 0
+        changeToolbarsColors.value =  false
+    }
+    fun setfClearSelectedItems(bool: Boolean){
+       fClearSelectedItems.value = bool
     }
 
 }

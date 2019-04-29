@@ -4,11 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -34,15 +33,11 @@ class GraphicPiecesFragment: Fragment(){
         vmodel.setToolbarTitle(getString(R.string.do_requests))
         vmodel.setChangeToolbarsColors(false)
 
+        //reset values of vmodel to default
+        vmodel.setDefaultValues()
+
         vmodel.toolbarTitleText.observe(this, Observer { textString ->
             activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
-        })
-
-        vmodel.bottombarVisibility.observe(this, Observer {  bool ->
-            when(bool){
-                true -> activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces).visibility = VISIBLE
-                false -> activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces).visibility = INVISIBLE
-            }
         })
 
         vmodel.changeToolbarsColors.observe(this, Observer {
@@ -50,6 +45,21 @@ class GraphicPiecesFragment: Fragment(){
                 .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
             activity!!.findViewById<Toolbar>(R.id.toolBarGraphicPieces)
                 .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
+        })
+
+        vmodel.fFillBottomBartLayout.observe(this, Observer {bool->
+            when(bool){
+                true -> {
+                    val coordLayout: CoordinatorLayout = activity!!.findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
+                    var layoutParams = coordLayout.getLayoutParams()
+                    layoutParams.height = 100
+                    coordLayout.setLayoutParams(layoutParams)
+                }
+                false-> {
+                    val coordLayout:CoordinatorLayout = activity!!.findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
+                    coordLayout.layoutParams.height = 0
+                }
+            }
         })
 
         binding.btFragmentttypepieceDigitalpiece.setOnClickListener {
@@ -70,7 +80,6 @@ class GraphicPiecesFragment: Fragment(){
 
     override fun onResume() {
         super.onResume()
-        vmodel.setBottomBarVisibility(false)
 
         /*
         val rootGroup:ViewGroup = view!!.findViewById(R.id.graphicPieceNavHostFragment)

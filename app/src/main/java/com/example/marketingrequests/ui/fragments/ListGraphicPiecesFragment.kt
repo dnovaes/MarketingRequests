@@ -4,12 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -56,26 +55,33 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
         val args = arguments //receives a Bundle
 
         vmodel.setToolbarTitle(args?.getString("typeGraphicSelected") as String)
-        vmodel.setBottomBarVisibility(true)
 
         vmodel.toolbarTitleText.observe(this, Observer { textString ->
             activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
         })
 
-        vmodel.bottombarVisibility.observe(this, Observer { bool ->
+        vmodel.fFillBottomBartLayout.observe(this, Observer {bool->
             when(bool){
-                true -> activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces).visibility = VISIBLE
-                false -> activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces).visibility = INVISIBLE
+                true -> {
+                    val coordLayout:CoordinatorLayout = activity!!.findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
+                    var layoutParams = coordLayout.getLayoutParams()
+                    layoutParams.height = 100
+                    coordLayout.setLayoutParams(layoutParams)
+                }
+                false-> {
+                    val coordLayout:CoordinatorLayout = activity!!.findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
+                    coordLayout.layoutParams.height = 0
+                }
             }
         })
 
-        vmodel.numberItemsSelected.observe(this, Observer { num  ->
-            activity!!.findViewById<TextView>(R.id.bottomAppBar_numberSelected_GraphicPieces).text = num.toString()
-        })
-
         vmodel.selecedtItemList.observe(this, Observer{
+            //mark item as selected and checkbox checked
             it.item_checkbox_listgraphicpieces.isChecked = !it.item_checkbox_listgraphicpieces.isChecked
             it.item_recyclerView_listgraphicpieces.isSelected = !it.item_recyclerView_listgraphicpieces.isSelected
+            //update number in bottomAppBar
+            var num = vmodel.getNumberItemsSelected()
+            activity!!.findViewById<TextView>(R.id.bottomAppBar_numberSelected_GraphicPieces).text = num.toString()
         })
 
         vmodel.changeToolbarsColors.observe(this, Observer {bool ->
@@ -108,9 +114,8 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
         //Log.v("colortest", "pos $pos | $colorInt "+0x425363)
         //view.isSelected = !view.isSelected
 
-        vmodel.setSelectedItemList(layout)
         var numberSelectedItems = vmodel.getNumberItemsSelected() as Int
-        if(!layout.item_recyclerView_listgraphicpieces.isSelected){
+        if(layout.item_recyclerView_listgraphicpieces.isSelected){
             vmodel.setNumberItemsSelected(numberSelectedItems-1)
         }else{
             vmodel.setNumberItemsSelected(numberSelectedItems+1)
@@ -118,9 +123,15 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
 
         if(vmodel.getNumberItemsSelected() as Int > 0){
             vmodel.setChangeToolbarsColors(true)
+            //change height of layout to leave space to bottomBar
+            vmodel.setfFillBottomBartLayout(true)
         }else{
             vmodel.setChangeToolbarsColors(false)
+            //change height to fill the empty space of bottomBar
+            vmodel.setfFillBottomBartLayout(false)
         }
+        //proc the observer to change elements in layout
+        vmodel.setSelectedItemList(layout)
     }
 }
 

@@ -11,6 +11,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -29,38 +30,11 @@ class GraphicPiecesFragment: Fragment(){
         val binding: FragmentTypegraphicpieceBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_typegraphicpiece, container, false)
 
-        vmodel = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
+        vmodel = ViewModelProviders.of(this.activity as FragmentActivity).get(GraphicPiecesViewModel::class.java)
         vmodel.setToolbarTitle(getString(R.string.do_requests))
-        vmodel.setChangeToolbarsColors(false)
 
         //reset values of vmodel to default
         vmodel.setDefaultValues()
-
-        vmodel.toolbarTitleText.observe(this, Observer { textString ->
-            activity!!.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
-        })
-
-        vmodel.changeToolbarsColors.observe(this, Observer {
-            activity!!.findViewById<BottomAppBar>(R.id.bottomAppBar_GraphicPieces)
-                .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
-            activity!!.findViewById<Toolbar>(R.id.toolBarGraphicPieces)
-                .setBackgroundColor(getColor(this.context as Context, R.color.bgPetrobahia))
-        })
-
-        vmodel.fFillBottomBartLayout.observe(this, Observer {bool->
-            when(bool){
-                true -> {
-                    val coordLayout: CoordinatorLayout = activity!!.findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
-                    var layoutParams = coordLayout.getLayoutParams()
-                    layoutParams.height = 100
-                    coordLayout.setLayoutParams(layoutParams)
-                }
-                false-> {
-                    val coordLayout:CoordinatorLayout = activity!!.findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
-                    coordLayout.layoutParams.height = 0
-                }
-            }
-        })
 
         binding.btFragmentttypepieceDigitalpiece.setOnClickListener {
             val action =

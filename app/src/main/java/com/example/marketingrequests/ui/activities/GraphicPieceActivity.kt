@@ -1,4 +1,4 @@
-package com.example.marketingrequests.ui.Activities
+package com.example.marketingrequests.ui.activities
 
 import android.animation.LayoutTransition
 import android.content.pm.ActivityInfo
@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.marketingrequests.R
 import com.example.marketingrequests.databinding.ActivityGraphicpieceBinding
-import com.google.android.material.bottomappbar.BottomAppBar
 
 class GraphicPieceActivity: AppCompatActivity(){
     private lateinit var binding :ActivityGraphicpieceBinding

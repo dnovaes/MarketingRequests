@@ -1,4 +1,4 @@
-package com.example.marketingrequests.<img src="/imgs_readme/fragment_typegraphicpieces.png" width="300"/>ui.Fragments
+package com.example.marketingrequests.ui.fragments
 
 import android.content.Context
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.marketingrequests.ui.Fragments
+package com.example.marketingrequests.ui.fragments
 
 import android.content.Context
 import android.os.Bundle

@@ -38,7 +38,7 @@ class GraphicPieceActivity: AppCompatActivity(){
 
         // Observers
 
-        vmodel.toolbarTitleText.observe(this, Observer { textString ->
+        vmodel.toolbarTitle.observe(this, Observer { textString ->
             this.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
         })
 

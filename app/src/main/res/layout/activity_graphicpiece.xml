@@ -50,14 +50,14 @@
         <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/coordinatorLayout"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="0dp"
                 android:orientation="vertical"
                 android:animateLayoutChanges="true"
                 tools:backgroundTint="@color/bgPetrobahia"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/graphicPieceNavHostFragment"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent"
+        >
             <com.google.android.material.bottomappbar.BottomAppBar
                     android:id="@+id/bottomAppBar_GraphicPieces"
                     android:layout_width="match_parent"
@@ -65,24 +65,46 @@
                     android:layout_gravity="bottom"
                     app:backgroundTint="@color/bgPetrobahia"
             >
-                <ImageButton
-                        android:id="@+id/bottomAppBar_backBt_GraphicPieces"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@drawable/ic_arrow_back_white_24px"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginBottom="20dp"/>
-                <TextView
-                        android:id="@+id/bottomAppBar_numberSelected_GraphicPieces"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="@string/bottombar_numberselected_itemmenu"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/title_textSize"
-                        android:typeface="serif"
-                        android:textStyle="bold"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginBottom="20dp"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/bottomAppBar_backBtLayout_GraphicPieces"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="11dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:focusable="true"
+                        android:clickable="true"
+                >
+                    <ImageButton
+                            android:id="@+id/bottomAppBar_backBt_GraphicPieces"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_arrow_back_white_24px"
+                            android:layout_marginEnd="8dp"
+                            android:focusable="false"
+                            android:clickable="false"
+                            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+                            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="11dp">
+                    <TextView
+                            android:id="@+id/bottomAppBar_numberSelected_GraphicPieces"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/bottombar_numberselected_itemmenu"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/title_textSize"
+                            android:typeface="serif"
+                            android:textStyle="bold"
+                            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <!--app:navigationIcon="@drawable/ic_back"-->
             </com.google.android.material.bottomappbar.BottomAppBar>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

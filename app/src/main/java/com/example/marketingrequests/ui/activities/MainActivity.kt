@@ -1,4 +1,4 @@
-package com.example.marketingrequests.ui.Activities
+package com.example.marketingrequests.ui.activities
 
 import android.content.Intent
 import android.content.pm.ActivityInfo

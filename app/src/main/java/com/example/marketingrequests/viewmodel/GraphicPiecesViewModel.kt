@@ -7,10 +7,12 @@ import com.example.marketingrequests.SingleLiveEvent
 
 class GraphicPiecesViewModel: ViewModel() {
     var toolbarTitleText: MutableLiveData<String> = MutableLiveData<String>()
-    var bottombarVisibility: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     var numberItemsSelected: MutableLiveData<Int> = MutableLiveData<Int>().apply {setValue(0)}
     var selecedtItemList = SingleLiveEvent<ConstraintLayout>()
     var changeToolbarsColors = MutableLiveData<Boolean>()
+    var fFillBottomBartLayout= MutableLiveData<Boolean>()
+    var fClearSelectedItems= SingleLiveEvent<Boolean>()
+
     private var argsTypeSelected: String = ""
 
     fun getToolbarTitle() = toolbarTitleText.value
@@ -27,10 +29,6 @@ class GraphicPiecesViewModel: ViewModel() {
         return argsTypeSelected
     }
 
-    fun setBottomBarVisibility(bool:Boolean){
-        this.bottombarVisibility.value = bool
-    }
-
     fun setChangeToolbarsColors(bool:Boolean){
         this.changeToolbarsColors.value = bool
     }
@@ -44,5 +42,20 @@ class GraphicPiecesViewModel: ViewModel() {
     }
 
     fun getNumberItemsSelected() = numberItemsSelected.value
+
+    fun setfFillBottomBartLayout(bool: Boolean){
+        this.fFillBottomBartLayout.value = bool
+    }
+
+    fun getFillBottomBarLayout() = fFillBottomBartLayout.value
+
+    fun setDefaultValues(){
+        fFillBottomBartLayout.value = false
+        numberItemsSelected.value = 0
+        changeToolbarsColors.value =  false
+    }
+    fun setfClearSelectedItems(bool: Boolean){
+       fClearSelectedItems.value = bool
+    }
 
 }

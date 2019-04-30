@@ -30,7 +30,7 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
         "Imagem Whatsapp", "Apresentaçao PPT", "Avatar Whatsapp", "Video Comemorativo", "Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7")
     private lateinit var vmodel: GraphicPiecesViewModel
     private lateinit var binding:FragmentListgraphicpiecesBinding
-    private lateinit var itemsSelected: List<ConstraintLayout>
+    private lateinit var itemsSelected: ArrayList<ConstraintLayout>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -87,6 +87,7 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
                 item.item_recyclerView_listgraphicpieces.isSelected = false
                 item.item_checkbox_listgraphicpieces.isChecked = false
             }
+            itemsSelected.clear()
             vmodel.setDefaultValues()
         })
 
@@ -98,7 +99,7 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onClickItemList(layout:ConstraintLayout, itemsSelected: List<ConstraintLayout>) {
+    override fun onClickItemList(layout:ConstraintLayout, itemsSelected: ArrayList<ConstraintLayout>) {
         //var view:View = viewManager.findViewByPosition(pos) as View
         //var color:String = String.format("%06x", ContextCompat.getColor(activity!!, R.color.colorSelectedItem) and 0xffffff)
         //var colorInt: Int = color.toInt(16)

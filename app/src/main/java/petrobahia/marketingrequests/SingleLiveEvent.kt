@@ -1,4 +1,4 @@
-package com.example.marketingrequests
+package petrobahia.marketingrequests
 
 import android.util.Log
 import androidx.annotation.MainThread

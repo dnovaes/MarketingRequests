@@ -1,10 +1,10 @@
-package com.example.marketingrequests.ui.adapters
+package petrobahia.marketingrequests.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.marketingrequests.R
+import petrobahia.marketingrequests.R
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
 
 class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListener: onGraphicPieceListener) :
@@ -20,7 +20,7 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): ListGraphicPiecesAdapter.MyViewHolder {
+                                    viewType: Int): MyViewHolder {
         // create a new view
         var layoutHolder = LayoutInflater.from(parent.context)
             .inflate(R.layout.recyclerview_listgraphicpieces_item, parent, false) as ConstraintLayout

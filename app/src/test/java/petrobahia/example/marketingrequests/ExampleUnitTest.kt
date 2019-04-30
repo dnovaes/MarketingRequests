@@ -1,4 +1,4 @@
-package com.example.marketingrequests
+package petrobahia.example.marketingrequests
 
 import org.junit.Test
 

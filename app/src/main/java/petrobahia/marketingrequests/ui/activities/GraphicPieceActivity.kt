@@ -1,4 +1,4 @@
-package com.example.marketingrequests.ui.activities
+package petrobahia.marketingrequests.ui.activities
 
 import android.animation.LayoutTransition
 import android.content.pm.ActivityInfo
@@ -12,13 +12,13 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.marketingrequests.R
-import com.example.marketingrequests.databinding.ActivityGraphicpieceBinding
-import com.example.marketingrequests.viewmodel.GraphicPiecesViewModel
+import petrobahia.marketingrequests.R
+import petrobahia.marketingrequests.databinding.ActivityGraphicpieceBinding
+import petrobahia.marketingrequests.viewmodel.GraphicPiecesViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 
 class GraphicPieceActivity: AppCompatActivity(){
-    private lateinit var binding :ActivityGraphicpieceBinding
+    private lateinit var binding : ActivityGraphicpieceBinding
     private lateinit var vmodel: GraphicPiecesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

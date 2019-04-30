@@ -1,9 +1,9 @@
-package com.example.marketingrequests.viewmodel
+package petrobahia.marketingrequests.viewmodel
 
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.marketingrequests.SingleLiveEvent
+import petrobahia.marketingrequests.SingleLiveEvent
 
 class GraphicPiecesViewModel: ViewModel() {
     var toolbarTitle: MutableLiveData<String> = MutableLiveData<String>()

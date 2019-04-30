@@ -39,8 +39,10 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
             //if item was clicked in this call and currently not market as selected. it will be add on list of selected items cuz it will be marked selected very soon. (in next line (listener.onClickItemList())
             if(!holder.layoutHolder.item_recyclerView_listgraphicpieces.isSelected){
                 itemsSelected.add(holder.layoutHolder)
+            }else{
+                itemsSelected.remove(holder.layoutHolder)
             }
-            listener.onClickItemList(holder.layoutHolder, itemsSelected)
+            listener.onClickItemList(holder.layoutHolder, itemsSelected as ArrayList<ConstraintLayout>)
         }
     }
 
@@ -50,5 +52,5 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
 }
 
 interface onGraphicPieceListener{
-    fun onClickItemList(layout:ConstraintLayout, itemsSelected: List<ConstraintLayout>)
+    fun onClickItemList(layout:ConstraintLayout, itemsSelected: ArrayList<ConstraintLayout>)
 }

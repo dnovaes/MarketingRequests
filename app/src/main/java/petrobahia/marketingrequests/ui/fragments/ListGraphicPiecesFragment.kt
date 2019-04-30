@@ -1,4 +1,4 @@
-package com.example.marketingrequests.ui.fragments
+package petrobahia.marketingrequests.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,11 +13,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.marketingrequests.R
-import com.example.marketingrequests.viewmodel.GraphicPiecesViewModel
-import com.example.marketingrequests.databinding.FragmentListgraphicpiecesBinding
-import com.example.marketingrequests.ui.adapters.ListGraphicPiecesAdapter
-import com.example.marketingrequests.ui.adapters.onGraphicPieceListener
+import petrobahia.marketingrequests.R
+import petrobahia.marketingrequests.viewmodel.GraphicPiecesViewModel
+import petrobahia.marketingrequests.databinding.FragmentListgraphicpiecesBinding
+import petrobahia.marketingrequests.ui.adapters.ListGraphicPiecesAdapter
+import petrobahia.marketingrequests.ui.adapters.onGraphicPieceListener
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
 
 
@@ -29,7 +29,7 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
     private var arrayItems:Array<String> = arrayOf("Email Marketing",
         "Imagem Whatsapp", "Apresentaçao PPT", "Avatar Whatsapp", "Video Comemorativo", "Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7")
     private lateinit var vmodel: GraphicPiecesViewModel
-    private lateinit var binding:FragmentListgraphicpiecesBinding
+    private lateinit var binding: FragmentListgraphicpiecesBinding
     private lateinit var itemsSelected: ArrayList<ConstraintLayout>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

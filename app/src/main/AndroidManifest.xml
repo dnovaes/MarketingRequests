@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.marketingrequests">
+          package="petrobahia.marketingrequests">
 
     <application
             android:allowBackup="true"
@@ -8,7 +8,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.marketingrequests.ui.activities.MainActivity"
+            android:name="petrobahia.marketingrequests.ui.activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,7 +16,7 @@
            </intent-filter>
         </activity>
         <activity
-            android:name="com.example.marketingrequests.ui.activities.GraphicPieceActivity"
+            android:name="petrobahia.marketingrequests.ui.activities.GraphicPieceActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
     </application>

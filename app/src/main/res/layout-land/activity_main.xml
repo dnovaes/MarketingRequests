@@ -9,7 +9,7 @@
     <data>
         <variable
                 name="title"
-                type="com.example.marketingrequests.model.Title"
+                type="petrobahia.marketingrequests.model.Title"
         />
     </data>
 

@@ -1,12 +1,12 @@
-package com.example.marketingrequests.ui.activities
+package petrobahia.marketingrequests.ui.activities
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.marketingrequests.R
-import com.example.marketingrequests.databinding.ActivityMainBinding
+import petrobahia.marketingrequests.R
+import petrobahia.marketingrequests.databinding.ActivityMainBinding
 
 class MainActivity: AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding

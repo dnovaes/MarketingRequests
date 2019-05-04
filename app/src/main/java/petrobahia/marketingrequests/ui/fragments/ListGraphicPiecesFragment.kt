@@ -1,6 +1,7 @@
 package petrobahia.marketingrequests.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,13 @@ import petrobahia.marketingrequests.databinding.FragmentListgraphicpiecesBinding
 import petrobahia.marketingrequests.ui.adapters.ListGraphicPiecesAdapter
 import petrobahia.marketingrequests.ui.adapters.onGraphicPieceListener
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
+import petrobahia.marketingrequests.model.GraphicPiece
+import petrobahia.marketingrequests.model.GraphicPieceList
+import petrobahia.marketingrequests.util.`interface`.JsonMarketingRequestsAPI
+import petrobahia.marketingrequests.util.network.RetrofitMarketingRequests
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
@@ -89,6 +97,36 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
             }
             itemsSelected.clear()
             vmodel.setDefaultValues()
+        })
+
+        val pBMarketingRequestsApi: JsonMarketingRequestsAPI = RetrofitMarketingRequests.getRetrofitInstance().create(JsonMarketingRequestsAPI::class.java)
+        val call:Call<GraphicPieceList> = pBMarketingRequestsApi.getGraphicPiecesData()
+
+        call.enqueue(object: Callback<GraphicPieceList>{
+
+            override fun onFailure(call: Call<GraphicPieceList>, t: Throwable) {
+                t.cause
+                Log.v("RETROFIT FAILURE", t.message)
+                return
+            }
+
+            override fun onResponse(call: Call<GraphicPieceList>, response: Response<GraphicPieceList>) {
+                Log.v("RETROFIT onRESPONSE", "Code: ${response.code()}") //To change body of created functions use File | Settings | File Templates.
+                if(!response.isSuccessful){
+                    Log.v("RETROFIT RESPONSE FAIL", "didnt work :(\n Code: ${response.code()}") //To change body of created functions use File | Settings | File Templates.
+                    return
+                }
+                var graphicPieceArrayList: ArrayList<GraphicPiece> = response.body()!!.getGraphicPieceArrayList()
+                //Log.v("RETROFIT RESP SUCCESS", "${response.body()!!.getMessageContent()}") //To change body of created functions use File | Settings | File Templates.
+
+                for(item: GraphicPiece in graphicPieceArrayList) {
+                    Log.v(
+                        "RETROFIT RESPONSE",
+                        item.getTitle()
+                    ) //To change body of created functions use File | Settings | File Templates.
+                }
+
+            }
         })
 
         //return super.onCreateView(inflater, container, savedInstanceState)

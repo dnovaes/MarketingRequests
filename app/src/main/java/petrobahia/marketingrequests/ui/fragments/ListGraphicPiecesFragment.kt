@@ -91,6 +91,7 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
                         layoutManager = viewManager
                         adapter = viewAdapter
                     }
+                    binding.progressBarFragmentListgraphicpieces.visibility = View.GONE
                     /*
                     for(item: GraphicPiece in graphicPieceArrayList) {
                         Log.v(

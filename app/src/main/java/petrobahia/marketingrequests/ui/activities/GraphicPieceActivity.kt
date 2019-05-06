@@ -29,7 +29,9 @@ class GraphicPieceActivity: AppCompatActivity(){
 
         binding = DataBindingUtil.setContentView<ActivityGraphicpieceBinding>(this,
             R.layout.activity_graphicpiece)
+
         setSupportActionBar(binding.toolBarGraphicPieces)
+
         vmodel = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
 
         binding.coordinatorLayout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
@@ -40,6 +42,14 @@ class GraphicPieceActivity: AppCompatActivity(){
 
         vmodel.toolbarTitle.observe(this, Observer { textString ->
             this.findViewById<TextView>(R.id.toolbarTitle).setText(textString)
+            when(textString){
+               getString(R.string.do_requests) -> {
+                   binding.rootConstrLayoutActivityGraphicpiece
+                       .setBackgroundColor(getColor(this, R.color.white))
+               }
+               else -> binding.rootConstrLayoutActivityGraphicpiece
+                   .setBackgroundColor(getColor(this, R.color.bgPetrobahia))
+            }
         })
 
         vmodel.fFillBottomBartLayout.observe(this, Observer {bool->

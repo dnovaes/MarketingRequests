@@ -4,15 +4,19 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import petrobahia.marketingrequests.SingleLiveEvent
+import petrobahia.marketingrequests.model.GraphicPieceList
 
 class GraphicPiecesViewModel: ViewModel() {
     var toolbarTitle: MutableLiveData<String> = MutableLiveData<String>()
     var numberItemsSelected: MutableLiveData<Int> = MutableLiveData<Int>().apply {setValue(0)}
     var selecedtItemList = SingleLiveEvent<ConstraintLayout>()
     var changeToolbarsColors = MutableLiveData<Boolean>()
+    //Flags
     var fFillBottomBartLayout= MutableLiveData<Boolean>()
     var fClearSelectedItems= SingleLiveEvent<Boolean>()
+    var fGetGraphicPiecesByType = MutableLiveData<Boolean>()
 
+    private var fGraphicPieceList: MutableLiveData<GraphicPieceList> = MutableLiveData<GraphicPieceList>()
     private var argsTypeSelected: String = ""
 
     fun getToolbarTitle() = toolbarTitle.value
@@ -58,4 +62,14 @@ class GraphicPiecesViewModel: ViewModel() {
        fClearSelectedItems.value = bool
     }
 
+    fun getfGraphicPieceList() = fGraphicPieceList.value
+
+    fun setfGraphicPieceList(list: GraphicPieceList){
+        fGraphicPieceList.value = list
+    }
+
+    fun getfGetGraphicPiecesByType() = fGetGraphicPiecesByType.value
+    fun setfGetGraphicPiecesByType(bool:Boolean){
+        fGetGraphicPiecesByType.value = bool
+    }
 }

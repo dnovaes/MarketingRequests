@@ -9,4 +9,10 @@ public interface JsonMarketingRequestsAPI{
 
     @GET("graphicpieces")
     fun getGraphicPiecesData(): Call<GraphicPieceList>
+
+    @GET("graphicpieces/digital/")
+    fun getDigitalGraphicPiecesData(): Call<GraphicPieceList>
+
+    @GET("graphicpieces/printed/")
+    fun getPrintedGraphicPiecesData(): Call<GraphicPieceList>
 }

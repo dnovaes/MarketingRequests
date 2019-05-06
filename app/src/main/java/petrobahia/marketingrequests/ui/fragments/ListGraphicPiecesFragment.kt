@@ -34,8 +34,7 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private var arrayItems:Array<String> = arrayOf("Email Marketing",
-        "Imagem Whatsapp", "Apresentaçao PPT", "Avatar Whatsapp", "Video Comemorativo", "Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7")
+    //private var arrayItems:Array<String> = arrayOf("Email Marketing", "Imagem Whatsapp", "Apresentaçao PPT", "Avatar Whatsapp", "Video Comemorativo", "Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7")
     private lateinit var vmodel: GraphicPiecesViewModel
     private lateinit var binding: FragmentListgraphicpiecesBinding
     private lateinit var itemsSelected: ArrayList<ConstraintLayout>
@@ -49,19 +48,62 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
         //vmodel = ViewModelProviders.of(this).get(GraphicPiecesViewModel::class.java)
 
         viewManager = LinearLayoutManager(this.activity)
-        viewAdapter = ListGraphicPiecesAdapter(arrayItems, this)
-
-        recyclerView = binding.recyclerViewListGraphicPieces.apply{
-            setHasFixedSize(true)
-            layoutManager = viewManager
-            adapter = viewAdapter
-
-        }
 
         //observing Livedata toolbartitle
         val args = arguments //receives a Bundle
+        var graphicTypeText:String = args?.getString("typeGraphicSelected") as String
 
-        vmodel.setToolbarTitle(args?.getString("typeGraphicSelected") as String)
+        vmodel.setToolbarTitle(graphicTypeText)
+        vmodel.setfGetGraphicPiecesByType(true)
+
+        val pBMarketingRequestsApi: JsonMarketingRequestsAPI = RetrofitMarketingRequests.getRetrofitInstance().create(JsonMarketingRequestsAPI::class.java)
+        vmodel.fGetGraphicPiecesByType.observe(this, Observer{
+
+            var call:Call<GraphicPieceList>? = when(graphicTypeText){
+                getString(R.string.digital_piece) -> pBMarketingRequestsApi.getDigitalGraphicPiecesData()
+                getString(R.string.printed_piece) -> pBMarketingRequestsApi.getPrintedGraphicPiecesData()
+                else -> {
+                    Log.e("fGetGraphicPiecesByType", "entered null in observer of fGetGraphicPiecesByType when '$graphicTypeText'")
+                    null
+                }
+            }
+
+            call?.enqueue(object: Callback<GraphicPieceList>{
+
+                override fun onFailure(call: Call<GraphicPieceList>, t: Throwable) {
+                    t.cause
+                    Log.v("RETROFIT FAILURE", t.message)
+                    return
+                }
+
+                override fun onResponse(call: Call<GraphicPieceList>, response: Response<GraphicPieceList>) {
+                    Log.v("RETROFIT onRESPONSE", "Code: ${response.code()}") //To change body of created functions use File | Settings | File Templates.
+                    if(!response.isSuccessful){
+                        Log.e("RETROFIT RESPONSE FAIL", "didnt work :(\n Code: ${response.code()}") //To change body of created functions use File | Settings | File Templates.
+                        return
+                    }
+                    var graphicPieceArrayList: ArrayList<GraphicPiece> = response.body()!!.getGraphicPieceArrayList()
+
+                    viewAdapter = ListGraphicPiecesAdapter(graphicPieceArrayList, this@ListGraphicPiecesFragment)
+
+                    recyclerView = binding.recyclerViewListGraphicPieces.apply{
+                        setHasFixedSize(true)
+                        layoutManager = viewManager
+                        adapter = viewAdapter
+                    }
+                    binding.progressBarFragmentListgraphicpieces.visibility = View.GONE
+                    /*
+                    for(item: GraphicPiece in graphicPieceArrayList) {
+                        Log.v(
+                            "RETROFIT RESPONSE",
+                            item.getTitle()
+                        ) //To change body of created functions use File | Settings | File Templates.
+                    }*/
+
+                }
+            })
+
+        })
 
         vmodel.selecedtItemList.observe(this, Observer{
             //mark item as selected and checkbox checked
@@ -99,42 +141,9 @@ class ListGraphicPiecesFragment: Fragment(), onGraphicPieceListener {
             vmodel.setDefaultValues()
         })
 
-        val pBMarketingRequestsApi: JsonMarketingRequestsAPI = RetrofitMarketingRequests.getRetrofitInstance().create(JsonMarketingRequestsAPI::class.java)
-        val call:Call<GraphicPieceList> = pBMarketingRequestsApi.getGraphicPiecesData()
-
-        call.enqueue(object: Callback<GraphicPieceList>{
-
-            override fun onFailure(call: Call<GraphicPieceList>, t: Throwable) {
-                t.cause
-                Log.v("RETROFIT FAILURE", t.message)
-                return
-            }
-
-            override fun onResponse(call: Call<GraphicPieceList>, response: Response<GraphicPieceList>) {
-                Log.v("RETROFIT onRESPONSE", "Code: ${response.code()}") //To change body of created functions use File | Settings | File Templates.
-                if(!response.isSuccessful){
-                    Log.v("RETROFIT RESPONSE FAIL", "didnt work :(\n Code: ${response.code()}") //To change body of created functions use File | Settings | File Templates.
-                    return
-                }
-                var graphicPieceArrayList: ArrayList<GraphicPiece> = response.body()!!.getGraphicPieceArrayList()
-                //Log.v("RETROFIT RESP SUCCESS", "${response.body()!!.getMessageContent()}") //To change body of created functions use File | Settings | File Templates.
-
-                for(item: GraphicPiece in graphicPieceArrayList) {
-                    Log.v(
-                        "RETROFIT RESPONSE",
-                        item.getTitle()
-                    ) //To change body of created functions use File | Settings | File Templates.
-                }
-
-            }
-        })
 
         //return super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onClickItemList(layout:ConstraintLayout, itemsSelected: ArrayList<ConstraintLayout>) {

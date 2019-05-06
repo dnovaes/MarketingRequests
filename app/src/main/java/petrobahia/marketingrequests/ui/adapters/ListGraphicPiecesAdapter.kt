@@ -6,8 +6,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import petrobahia.marketingrequests.R
 import kotlinx.android.synthetic.main.recyclerview_listgraphicpieces_item.view.*
+import petrobahia.marketingrequests.model.GraphicPiece
 
-class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListener: onGraphicPieceListener) :
+//class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListener: onGraphicPieceListener) :
+class ListGraphicPiecesAdapter(private val myDataset: ArrayList<GraphicPiece>, var myListener: onGraphicPieceListener) :
     RecyclerView.Adapter<ListGraphicPiecesAdapter.MyViewHolder>() {
     private var listener: onGraphicPieceListener = myListener
     var itemsSelected: MutableList<ConstraintLayout> = ArrayList()
@@ -33,7 +35,8 @@ class ListGraphicPiecesAdapter(private val myDataset: Array<String>, var myListe
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.layoutHolder.item_text_listgraphicpieces.text = myDataset[position]
+
+        holder.layoutHolder.item_text_listgraphicpieces.text = myDataset.get(position).getTitle()
 
         holder.itemView.setOnClickListener(){
             //if item was clicked in this call and currently not market as selected. it will be add on list of selected items cuz it will be marked selected very soon. (in next line (listener.onClickItemList())
